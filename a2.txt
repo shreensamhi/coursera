@@ -1,0 +1,64 @@
+Generic programming in Python can be done in several ways:
+1. Using functions: In Python, functions allow for generic programming by accepting arguments of any type and operating on them in a generic
+way. Functions can also return values of any type.
+
+2. Using classes and inheritance: Python's object-oriented programming features allow for generic programming through the use of classes and
+inheritance. A base class can define generic behavior that can be customized by derived classes.
+
+3. Using polymorphism: polymorphism can be used to create generic functions or classes that work with any data type, allowing them to be reused
+across different types of data.
+
+4. Using duck typing: Duck typing is a programming technique where the type of an object is determined by its behavior instead of its class or
+type. This allows for generic programming by accepting any object that behaves in a certain way.
+
+Comprehensive programs explaining generic programming:
+- Using functions:
+from typing import TypeVar
+
+T = TypeVar('T')
+def add(a: T, b: T) -> T:
+    return a + b
+    
+print(add(1, 2))  # prints 3
+print(add("hello", " world"))  # prints "hello world"
+
+- Using classes and inheritance:
+class Pair:
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
+
+    def get_first(self):
+        return self.first
+
+    def get_second(self):
+        return self.second
+
+# Create instances of the Pair class with different data types
+int_pair = Pair(1, 2)
+str_pair = Pair("hello", "world")
+
+print(int_pair.get_first()) # Output: 1
+print(str_pair.get_second()) # Output: world
+
+- Using polymorphism:
+class Duck:
+    def make_sound(self):
+        raise NotImplementedError()
+
+class MallardDuck(Duck):
+    def make_sound(self):
+        print("Quack")
+
+class WoodenDuck(Duck):
+    def make_sound(self):
+        print("No Quack")
+
+def duck_sound(duck):
+    duck.make_sound()
+
+malDuck = MallardDuck()
+woDuck = WoodenDuck()
+
+duck_sound(malDuck)   # Output: Quack
+duck_sound(woDuck)   # Output: No Quack
